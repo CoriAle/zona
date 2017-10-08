@@ -1,0 +1,31 @@
+{% extends 'base/base.html'%}
+{% block content%}
+  <table>
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Nombre</td>
+        <td>Género</td>
+        <td>Edad</td>
+        <td>Fecha de rescate</td>
+        <td>Adoptante</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% if mascotas %}
+      {% for mascota in mascotas%}
+      <tr>
+        <td>{{ mascota.id }}</td>
+        <td>{{ mascota.nombre }}</td>
+        <td>{{ mascota.genero }}</td>
+        <td>{{ mascota.edad }}</td>
+        <td>{{ mascota.fecha_rescate }}</td>
+        <td>{{ mascota.persona.nombre }} {{ mascota.persona.apellidos }}</td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h1>No hay registros que mostrar</h1>
+      {% endif %}
+    </tbody>
+  </table>
+{% endblock %}
