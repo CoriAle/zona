@@ -1,0 +1,32 @@
+{% extends 'base/base.html'%}
+
+{% block title%}
+Mascotas
+{% endblock %}
+{% block navbar%}
+{% endblock %}
+{% block content %}
+  <div class="col-md-6 offset-2">
+    <form class="form-horizontal"  method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username" class="col-12 control-label no-padding">Nombre de usuario</label>
+          <div class="col-12  no-padding">
+              <input type="text" class="form-control" name="username" >
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-12 control-label no-padding">Contraseña</label>
+            <div class="col-12  no-padding">
+                <input class="form-control" type="password" name="password" >
+            </div>
+            <div class="row">
+              <div class="col-md-6 offset-3">
+                <div class="form-group">
+                  <a href="#">Olvidé mi contraseña</a>
+                  <input type="submit" name="Iniciar sesión" value="Iniciar sesión">
+                </div>
+              </div>
+            </div>
+    </form>
+  </div>
+{% endblock %}
