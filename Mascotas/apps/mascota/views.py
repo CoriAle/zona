@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from apps.mascota.forms import MascotaForm
 from apps.mascota.models import Mascota
 from django.views.generic import ListView
@@ -20,7 +20,18 @@ def mascota_view(request):
     return render(request, 'mascota/mascota_form.html', {'form': form})
 
 def mascotas_list(request):
-    mascota = Mascota.objects.all().order_by('id')
+    mascota_l = Mascota.objects.all().order_by('id')
+    paginator = Paginator(mascota_l, 1) # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        mascota = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        mascota = paginator.page(1)
+    except EmptyPage:
+
+        mascota = paginator.page(paginator.num_pages)
     contexto = {'mascotas': mascota}
     return render(request, 'mascota/mascotas_list.html', contexto)
 

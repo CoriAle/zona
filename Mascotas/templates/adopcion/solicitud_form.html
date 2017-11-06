@@ -38,12 +38,19 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="{{form2.correo.name}}" class="col-12 control-label no-padding">
+      <label for="{{form2.correo.correo}}" class="col-12 control-label no-padding">
         {{form2.correo.label}}
       </label>
       <div class="col-12  no-padding">
           {{form2.correo}}
       </div>
+      {% if form2.correo.errors  %}
+        <ol>
+        {% for error in form2.correo.errors %}
+          <li><strong>{{ error }}</strong></li>
+        {% endfor %}
+        </ol>
+      {% endif %}
     </div>
     <div class="form-group">
       <label for="{{form2.direccion.name}}" class="col-12 control-label no-padding">

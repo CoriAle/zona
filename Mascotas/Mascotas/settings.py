@@ -122,8 +122,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-<<<<<<< HEAD
-<<<<<<< HEAD
 LOGIN_REDIRECT_URL = reverse_lazy('adopcion:solicitud_listar')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
@@ -133,7 +131,3 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = 'cursodjangoc@gmail.com'
 EMAIL_HOST_PASSWORD = 'cursodjango16'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-=======
->>>>>>> origin/master
-=======
->>>>>>> 453d06fa7a562420a537d523af16025ce578dc61

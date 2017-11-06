@@ -13,8 +13,8 @@
       </tr>
     </thead>
     <tbody>
-      {% if object_list %}
-      {% for mascota in object_list %}
+      {% if mascotas %}
+      {% for mascota in mascotas %}
       <tr>
         <td>{{ mascota.id }}</td>
         <td>{{ mascota.nombre }}</td>
@@ -33,4 +33,17 @@
       {% endif %}
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-md-6">
+      {% if mascotas.has_previous %}
+            <a href="?page={{ mascotas.previous_page_number }}" class="btn btn-link btn-left">Anterior</a>
+        {% endif %}
+
+    </div >
+    <div class="col-md-6">
+      {% if mascotas.has_next %}
+            <a href="?page={{ mascotas.next_page_number }}" class="btn btn-link  float-right">Siguiente</a>
+        {% endif %}
+    </div>
+  </div>
 {% endblock %}
