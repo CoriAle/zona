@@ -32,7 +32,7 @@ def vacuna_view(request):
 
 def mascotas_list(request):
     mascota_l = Mascota.objects.all().order_by('id')
-    paginator = Paginator(mascota_l, 1) # Show 25 contacts per page
+    paginator = Paginator(mascota_l, 2) # Show 25 contacts per page
 
     page = request.GET.get('page')
     try:
