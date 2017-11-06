@@ -1,12 +1,16 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<div class="col-md-6 offset-2">
+<div class="col-md-10 offset-1">
+  <div class="card">
+    <div class="card-block p-5">
+
+
   <form method="post" class="form-horizontal">
     {% csrf_token %}
     <fieldset>
       <h2>Datos personales</h2>
-
+<br>
     <div class="form-group">
       <label for="{{form2.nombre.name}}" class="col-12 control-label no-padding">{{form2.nombre.label}}</label>
       <div class="col-12  no-padding">
@@ -71,5 +75,6 @@
     <button type="submit" class="btn btn-lg btn-primary btn-md float-right">Guardar</button>
   </form>
 </div>
-
+</div>
+</div>
 {% endblock %}

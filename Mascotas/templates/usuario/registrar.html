@@ -1,8 +1,23 @@
 {% extends 'base/base.html'%}
+{% block title%}
+Mascotas
+{% endblock %}
+{%block nav%}
+{% endblock %}
+{% block navbar%}
+{% endblock %}
 {% block content %}
+<div class="col-md-6 offset-6">
+  <div class="card">
+    <div class="card-block">
+
+
 <form class="form-horizontal"  method="post">
   {% csrf_token%}
-    
+  <h4 class="card-title text-center mb-1">Crea una cuenta</h4>
+
+  <hr>
+  <br>
     <fieldset>
           <div class="form-group">
             <label for="{{form.username.name}}" class="col-12 control-label no-padding">
@@ -46,6 +61,7 @@
             {{form.email}}
         </div>
       </div>
+      
       <div class="form-group">
         <label for="{{form.password1.name}}" class="col-12 control-label no-padding">
           {{form.password1.label}}
@@ -63,11 +79,12 @@
         {% endif %}
 
       </div>
-      <div class="form-group">
+      <div class="form-group ">
         <label for="{{form.password2.name}}" class="col-12 control-label no-padding">
           {{form.password2.label}}
         </label>
         <div class="col-12  no-padding">
+
             {{form.password2}}
         </div>
 
@@ -81,6 +98,9 @@
 
       </div>
     </fieldset>
-    <button type="submit" name="button">Registrar</button>
+    <button type="submit" name="button" class="btn btn-block btn-primary mt-5">Registrar</button>
 </form>
+</div>
+</div>
+</div>
 {% endblock %}

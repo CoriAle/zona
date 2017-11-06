@@ -1,15 +1,17 @@
 {% extends 'base/base.html'%}
 
 {% block content %}
+<div class="text-center">
 
-<table class="table table-bordered">
+
+<table class="table table-striped table-bordered col-12">
     <thead>
       <tr>
-        <td>Solicitud</td>
-        <td>Adoptante</td>
-        <td>Mascotas</td>
-        <td>Razones</td>
-        <td>Acciones</td>
+        <td> <h5>Solicitud</h5></td>
+        <td><h5>Adoptante</h5></td>
+        <td><h5>Mascotas</h5></td>
+        <td><h5>Razones</h5></td>
+        <td><h5>Acciones</h5></td>
       </tr>
     </thead>
     <tbody>
@@ -22,8 +24,8 @@
           <td>{{ solicitud.razon}}</td>
 
           <td>
-            <a href="{% url 'adopcion:solicitud_editar' pk=solicitud.id %}" class="btn btn-primary">Editar</a>
-            <a href="{% url 'adopcion:solicitud_delete' id_solicitud=solicitud.id %}" class="btn btn-default">Eliminar</a>
+            <a href="{% url 'adopcion:solicitud_editar' pk=solicitud.id %}" class="btn btn-primary"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+            <a href="{% url 'adopcion:solicitud_delete' id_solicitud=solicitud.id %}" class="btn btn-danger"><i  style="color:white;"class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
           </td>
         </tr>
         {% endfor %}
@@ -32,4 +34,5 @@
       {% endif %}
     </tbody>
 </table>
+</div>
 {% endblock %}

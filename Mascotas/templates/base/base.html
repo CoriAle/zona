@@ -23,6 +23,7 @@
     <div class="container-fluid" id="wrapper">
 		<div class="row">
 
+
       <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
 				<h1 class="site-title"><a href="index.html">
           <span class="fa-stack fa-lg text-center">
@@ -32,19 +33,20 @@
         </h1>
 
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
-
+  {%block nav%}
 				<ul class="nav nav-pills flex-column sidebar-nav">
-					<li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-paw fa-3x"></em> Mascotas <span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="widgets.html"><em class="fa fa-medkit fa-2x"></em> Vacunas</a></li>
-					<li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-book fa-2x"></em> Solicitudes de adopción</a></li>
+					<li class="nav-item"><a class="nav-link active" href="{% url 'mascota:mascotas_list' %}"><em class="fa fa-paw fa-3x"></em> Mascotas <span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'mascota:vacuna_list' %}"><em class="fa fa-medkit fa-2x"></em> Vacunas</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'adopcion:solicitud_listar' %}"><em class="fa fa-book fa-2x"></em> Solicitudes de adopción</a></li>
 				</ul>
+        {% endblock%}
 
 				<a href="{% url 'logout'%}" class="logout-button"><em class="fa fa-power-off"></em> Salir</a></nav>
-
         <main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
           <header class="page-header row justify-center">
             <div class="col-md-6 col-lg-8" >
-              <h1 class="float-left text-center text-md-left">Dashboard</h1>
+              {% block navbar%}
+              <h1 class="float-left text-center text-md-left">Refugio de Mascotas</h1>
             </div>
 
             <div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,12 +64,13 @@
             </div>
 
             <div class="clear"></div>
+            {% endblock %}
           </header>
 
           <section class="row">
             <div class="col-sm-12">
               <section class="row">
-                <div class="col-md-12 col-lg-8">
+                <div class="col-md-12 col-lg-8 offset-lg-2">
                 {% block content%}
                   <h5>Este es el contenido del base</h5>
                 {% endblock %}

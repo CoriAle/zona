@@ -1,12 +1,16 @@
 {% extends 'base/base.html'%}
 {% block content%}
-  <table>
+<div class="text-center">
+
+
+<table class="table table-striped table-bordered col-12">
     <thead>
       <tr>
         <td>#</td>
-        <td>Nombre</td>
-        <td>Fecha de caducidad</td>
-        <td>Indicaciones</td>
+        <td><h5>Nombre</h5></td>
+        <td><h5>Fecha de caducidad</h5></td>
+        <td><h5>Indicaciones</h5></td>
+
       </tr>
     </thead>
     <tbody>
@@ -18,10 +22,10 @@
         <td>{{ vacuna.fecha_vencimiento }}</td>
         <td>{{ vacuna.funcion }}</td>
         <td>
-          <a class="btn btn-primary" href="{% url 'mascota:vacuna_editar' id_vacuna=vacuna.id %}">Editar</a>
+          <a class="btn btn-primary" href="{% url 'mascota:vacuna_editar' id_vacuna=vacuna.id %}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
         </td>
         <td>
-          <a  class="btn btn-danger" href="{% url 'mascota:vacuna_eliminar' id_vacuna=vacuna.id %}">Eliminar</a>
+          <a  class="btn btn-danger" href="{% url 'mascota:vacuna_eliminar' id_vacuna=vacuna.id %}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
         </td>
       </tr>
       {% endfor %}
@@ -30,5 +34,5 @@
       {% endif %}
     </tbody>
   </table>
-
+</div>
 {% endblock %}

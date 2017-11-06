@@ -11,7 +11,7 @@ def RegistroUsuario(request):
         form = RegistroForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('mascota:mascotas_list')
+            return redirect('mascota:mascotas_list')
     else:
         form = RegistroForm()
     return render(request, 'usuario/registrar.html', {'form': form})
