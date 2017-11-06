@@ -5,6 +5,8 @@ from apps.adopcion.models import Persona
 class Vacuna(models.Model):
     """docstring for Vacuna."""
     nombre=models.CharField(max_length=50)
+    fecha_vencimiento = models.DateField()
+    funcion= models.CharField(max_length=100)
     def __str__(self):
         return '{}'.format(self.nombre)
 

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from apps.mascota.forms import MascotaForm
-from apps.mascota.models import Mascota
+from apps.mascota.forms import MascotaForm, VacunaForm
+from apps.mascota.models import Mascota, Vacuna
 from django.views.generic import ListView
 # Create your views here.
 
@@ -18,6 +18,17 @@ def mascota_view(request):
     else:
         form = MascotaForm()
     return render(request, 'mascota/mascota_form.html', {'form': form})
+
+def vacuna_view(request):
+    if request.method == 'POST':
+        form = VacunaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('mascota:mascotas_list')
+    else:
+        form = VacunaForm()
+    return render(request, 'mascota/vacuna_form.html', {'form': form})
+
 
 def mascotas_list(request):
     mascota_l = Mascota.objects.all().order_by('id')
