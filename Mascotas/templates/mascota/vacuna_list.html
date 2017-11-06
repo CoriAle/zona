@@ -1,0 +1,34 @@
+{% extends 'base/base.html'%}
+{% block content%}
+  <table>
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Nombre</td>
+        <td>Fecha de caducidad</td>
+        <td>Indicaciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% if vacunas %}
+      {% for vacuna in vacunas %}
+      <tr>
+        <td>{{ vacuna.id }}</td>
+        <td>{{ vacuna.nombre }}</td>
+        <td>{{ vacuna.fecha_vencimiento }}</td>
+        <td>{{ vacuna.funcion }}</td>
+        <td>
+          <a class="btn btn-primary" href="{% url 'mascota:vacuna_editar' id_vacuna=vacuna.id %}">Editar</a>
+        </td>
+        <td>
+          <a  class="btn btn-danger" href="{% url 'mascota:vacuna_eliminar' id_vacuna=vacuna.id %}">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h1>No hay registros que mostrar</h1>
+      {% endif %}
+    </tbody>
+  </table>
+
+{% endblock %}

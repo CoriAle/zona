@@ -46,6 +46,11 @@ def mascotas_list(request):
     contexto = {'mascotas': mascota}
     return render(request, 'mascota/mascotas_list.html', contexto)
 
+def vacuna_list(request):
+    vacuna= Vacuna.objects.all().order_by('id')
+    contexto = {'vacunas': vacuna}
+    return render(request, 'mascota/vacuna_list.html', contexto)
+
 def mascota_edit(request, id_mascota):
     mascota = Mascota.objects.get(id= id_mascota)
     if request.method == 'GET':
@@ -57,12 +62,35 @@ def mascota_edit(request, id_mascota):
         return redirect('mascota:mascotas_list')
     return render(request, "mascota/mascota_form.html", {'form': form})
 
+def mascota_detalle(request,id_mascota):
+    mascota = Mascota.objects.get(id= id_mascota)
+    return render( request, "mascota/mascota_det.html", {'mascota': mascota})
+
+
+def vacuna_edit(request, id_vacuna):
+    vacuna = Vacuna.objects.get(id= id_vacuna)
+    if request.method == 'GET':
+        form = VacunaForm(instance=vacuna)
+    else:
+        form = VacunaForm(request.POST, instance=vacuna)
+        if form.is_valid():
+            form.save()
+            return redirect('mascota:vacuna_list')
+    return render(request, "mascota/vacuna_form.html", {'form': form})
+
 def delete_mascota(request, id_mascota):
     mascota = Mascota.objects.get(id= id_mascota)
     if request.method == 'POST':
         mascota.delete()
         return redirect('mascota:mascotas_list')
     return render(request, "mascota/mascota_delete.html", {'mascota': mascota})
+
+def delete_vacuna(request, id_vacuna):
+    vacuna = Vacuna.objects.get(id= id_vacuna)
+    if request.method == 'POST':
+        vacuna.delete()
+        return redirect('mascota:vacuna_list')
+    return render(request, "mascota/vacuna_delete.html", {'vacuna': vacuna})
 
 class MascotaList(ListView):
     model=Mascota

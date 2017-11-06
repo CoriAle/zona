@@ -1,0 +1,45 @@
+{% extends 'base/base.html'%}
+{% block content%}
+    {% if mascota %}
+
+      <div>
+
+        <div class="mt-4">
+          <h5>Nombre</h5>
+          {{ mascota.nombre }}</div>
+        <div class="mt-4">
+          <h5>Género</h5>
+          {{ mascota.genero }}</div>
+        <div class="mt-4">
+          <h5>Edad</h5>
+          {{ mascota.edad }}</div>
+        <div class="mt-4">
+          <h5>Fecha de rescate</h5>
+          {{ mascota.fecha_rescate }}</div>
+        <div  class="mt-4">
+          <h5>Adoptante</h5>
+          {{ mascota.persona.nombre }} {{ mascota.persona.apellidos }}</div>
+        <div class="mt-4" >
+          <h5>Vacunas</h5>
+          <p>
+          {% if mascota.vacuna.all%}
+            <ul>
+            {% for v in mascota.vacuna.all %}
+            <li>
+                {{   v.nombre}}
+            </li>
+
+            {% endfor %}
+          </ul>
+          {% endif%}
+        </p>
+        </div>
+        <div>
+
+      </div>
+
+      {% else %}
+      <h1>No hay registros que mostrar</h1>
+      {% endif %}
+
+  {% endblock %}
