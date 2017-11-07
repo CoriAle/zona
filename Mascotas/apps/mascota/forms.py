@@ -13,6 +13,7 @@ class MascotaForm(forms.ModelForm):
             'genero',
             'persona',
             'vacuna',
+            'imagen',
         ]
 
         labels = {
@@ -22,6 +23,7 @@ class MascotaForm(forms.ModelForm):
             'Género',
             'Adoptante',
             'Vacuna',
+            'Foto',
         }
 
         widgets = {

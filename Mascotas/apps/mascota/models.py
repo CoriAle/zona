@@ -16,5 +16,6 @@ class Mascota(models.Model):
     genero = models.CharField(max_length=10)
     edad= models.IntegerField()
     fecha_rescate = models.DateField()
+    imagen = models.ImageField(blank = True)
     persona = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
     vacuna = models.ManyToManyField(Vacuna, blank=True)

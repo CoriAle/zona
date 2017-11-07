@@ -14,7 +14,7 @@ def index(request):
 @staff_member_required
 def mascota_view(request):
     if request.method == 'POST':
-        form = MascotaForm(request.POST)
+        form = MascotaForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect('mascota:mascotas_list')
@@ -61,7 +61,7 @@ def mascota_edit(request, id_mascota):
     if request.method == 'GET':
         form = MascotaForm(instance=mascota)
     else:
-        form = MascotaForm(request.POST, instance=mascota)
+        form = MascotaForm(request.POST, request.FILES, instance=mascota)
         if form.is_valid():
             form.save()
         return redirect('mascota:mascotas_list')
