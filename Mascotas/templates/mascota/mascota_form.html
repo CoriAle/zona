@@ -3,6 +3,7 @@
   <div class="col-md-10 offset-1">
     <div class="card">
       <div class="card-block p-5">
+ {% if user.is_staff %}
   <form  method="post">
     <h2>Mascota</h2>
     <br>
@@ -11,6 +12,12 @@
 
     <button type="submit" class="btn btn-primary float-right btn-big">Guardar</button>
   </form>
+  {% else %}
+    <div class="alert bg-primary" role="alert">
+      <em class="fa fa-ban mr-2" aria-hidden="true"></em>
+      No tiene persmiso de acceder a esta función
+    </div>
+  {% endif %}
 </div>
 </div>
 {% endblock %}

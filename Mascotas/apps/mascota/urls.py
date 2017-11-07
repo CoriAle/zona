@@ -5,7 +5,6 @@ MascotaList, vacuna_view, vacuna_edit, delete_vacuna, vacuna_list, mascota_detal
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    url(r'^$', index, name="index"),
     url(r'^nuevo$', login_required(mascota_view), name="crear"),
     url(r'^vacuna/nueva$', login_required(vacuna_view), name="crearvacuna"),
     url(r'^mascotas$', login_required(mascotas_list), name="mascotas_list"),

@@ -8,7 +8,7 @@ Mascotas
 {% block navbar%}
 {% endblock %}
 {% block content %}
-  <div class="col-md-6 offset-6">
+  <div class="col-md-6 offset-3">
     <div class="card">
       <div class="card-block">
 
@@ -27,9 +27,9 @@ Mascotas
             <label for="password" class="col-12 control-label no-padding">Contraseña</label>
             <div class="col-12  no-padding">
                 <input class="form-control" type="password" name="password" >
-            </div>
+            </div> 
             <div class="row">
-              <div class="col-md-6 offset-3">
+              <div class="col-md-6 offset-4">
                 <div class="form-group mt-5">
                   <a href="{% url 'usuario:registrar'  %}">Crer una cuenta</a>
                   <input type="submit" name="Iniciar sesión" class="mt-5 btn btn-primary" value="Iniciar sesión">

@@ -52,9 +52,13 @@
             <div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
               <div class="username mt-1">
-                <h4 class="mb-1">Username</h4>
+                <h4 class="mb-1">{{user.username}}</h4>
 
-                <h6 class="text-muted">Super Admin</h6>
+                <h6 class="text-muted">
+                  {% if user.is_staff%}
+                    Administrador
+                  {% endif %}
+                </h6>
               </div>
               </a>
 
@@ -70,7 +74,7 @@
           <section class="row">
             <div class="col-sm-12">
               <section class="row">
-                <div class="col-md-12 col-lg-8 offset-lg-2">
+                <div class="col-md-12 col-lg-10 offset-lg-1">
                 {% block content%}
                   <h5>Este es el contenido del base</h5>
                 {% endblock %}

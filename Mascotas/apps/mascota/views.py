@@ -4,11 +4,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from apps.mascota.forms import MascotaForm, VacunaForm
 from apps.mascota.models import Mascota, Vacuna
 from django.views.generic import ListView
+from django.contrib.admin.views.decorators import staff_member_required
+
 # Create your views here.
 
 def index(request):
     return render(request, 'mascota/index.html')
 
+@staff_member_required
 def mascota_view(request):
     if request.method == 'POST':
         form = MascotaForm(request.POST)
@@ -19,12 +22,13 @@ def mascota_view(request):
         form = MascotaForm()
     return render(request, 'mascota/mascota_form.html', {'form': form})
 
+
 def vacuna_view(request):
     if request.method == 'POST':
         form = VacunaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('mascota:mascotas_list')
+            return redirect('mascota:vacuna_list')
     else:
         form = VacunaForm()
     return render(request, 'mascota/vacuna_form.html', {'form': form})
@@ -51,6 +55,7 @@ def vacuna_list(request):
     contexto = {'vacunas': vacuna}
     return render(request, 'mascota/vacuna_list.html', contexto)
 
+@staff_member_required
 def mascota_edit(request, id_mascota):
     mascota = Mascota.objects.get(id= id_mascota)
     if request.method == 'GET':
@@ -61,6 +66,7 @@ def mascota_edit(request, id_mascota):
             form.save()
         return redirect('mascota:mascotas_list')
     return render(request, "mascota/mascota_form.html", {'form': form})
+
 
 def mascota_detalle(request,id_mascota):
     mascota = Mascota.objects.get(id= id_mascota)
