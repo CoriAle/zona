@@ -2,9 +2,12 @@
 {% block content%}
     {% if mascota %}
 
-      <div>
-
-        <div class="mt-4">
+      <div class="card">
+        <div class="card-block px-5">
+          <div class="card-heard">
+            <i class="fa fa-info-circle float-right fa-2x " aria-hidden="true"></i>
+          </div>
+        <div class="mt-4 ">
           <h5>Nombre</h5>
           {{ mascota.nombre }}</div>
         <div class="mt-4">
@@ -37,6 +40,7 @@
         <div>
 
       </div>
+        </div>
 
       {% else %}
       <h1>No hay registros que mostrar</h1>
